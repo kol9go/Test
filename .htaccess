@@ -1,0 +1,4 @@
+<Files "users.xml|autorization.php|registration.php|homepage.php">
+    Order deny,allow
+    Deny from all
+</Files>

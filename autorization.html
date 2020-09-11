@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="script.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+</style>
+</head>
+
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<body>
+
+<form>
+  <div class="container">
+    <h1>Авторизация</h1>
+    <p>Пожалуйста, введите данные для авторизации</p>
+    <hr>
+
+    <label for="login"><b>Логин</b></label>
+    <input type="text" id='login' placeholder="Введите логин" name="login" pattern="[a-zA-Z0-9]{6,}" title="минимум 6 символов , только буквы и цифры" required>
+
+    <label for="psw"><b>Пароль</b></label>
+    <input type="password" id='password' placeholder="Введите пароль" name="psw" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}" title="минимум 6 символов , обязательно должны содержать цифру, буквы в разных регистрах и спец символ" required>
+
+    <hr>
+
+    <button type="submit" id='autorization' class="autorizbtn">Войти</button>
+  </div>
+</form>  
+  <div class="container signin">
+    <p>Не зарегистрированы? <a href="registration.html">Зарегистрироваться</a>.</p>
+  </div>
+
+
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        $('form').bind('submit', function () {
+          $.ajax({
+            type: 'post',
+            url: 'autorization.php',
+            data: $('form').serialize(),
+            success: function (data) {
+                if (data=="Авторизован"){
+            document.location.href = 'http://monao/homepage.php';}
+            }
+          });
+          return false;
+        });
+      });
+
+</script>
+
